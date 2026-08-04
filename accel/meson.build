@@ -12,6 +12,7 @@ if have_system
   subdir('stubs')
   subdir('mshv')
   subdir('nitro')
+  subdir('multikernel')
 endif
 
 # qtest

@@ -81,6 +81,8 @@ option('hvf', type: 'feature', value: 'auto',
        description: 'HVF acceleration support')
 option('nitro', type: 'feature', value: 'auto',
        description: 'Nitro acceleration support')
+option('multikernel', type: 'feature', value: 'auto',
+       description: 'Multikernel acceleration support')
 option('nvmm', type: 'feature', value: 'auto',
        description: 'NVMM acceleration support')
 option('xen', type: 'feature', value: 'auto',

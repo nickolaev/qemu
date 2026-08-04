@@ -39,6 +39,7 @@ or Hypervisor.Framework.
    multi-process
    confidential-guest-support
    igvm
+   multikernel
    nitro
    whpx
    vm-templating

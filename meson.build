@@ -311,6 +311,7 @@ elif cpu == 'x86_64'
   accelerator_targets += {
     'CONFIG_HVF': ['x86_64-softmmu'],
     'CONFIG_NITRO': ['x86_64-softmmu'],
+    'CONFIG_MULTIKERNEL': ['x86_64-softmmu'],
     'CONFIG_NVMM': ['i386-softmmu', 'x86_64-softmmu'],
     'CONFIG_WHPX': ['x86_64-softmmu'],
     'CONFIG_MSHV': ['x86_64-softmmu'],
@@ -909,6 +910,11 @@ if get_option('nitro').allowed() and host_os == 'linux'
   accelerators += 'CONFIG_NITRO'
 endif
 
+multikernel = not_found
+if get_option('multikernel').allowed() and host_os == 'linux' and cpu == 'x86_64'
+  accelerators += 'CONFIG_MULTIKERNEL'
+endif
+
 nvmm = not_found
 if host_os == 'netbsd'
   nvmm = cc.find_library('nvmm', required: get_option('nvmm'))
@@ -952,6 +958,9 @@ if 'CONFIG_HVF' not in accelerators and get_option('hvf').enabled()
 endif
 if 'CONFIG_NITRO' not in accelerators and get_option('nitro').enabled()
   error('NITRO not available on this platform')
+endif
+if 'CONFIG_MULTIKERNEL' not in accelerators and get_option('multikernel').enabled()
+  error('Multikernel not available on this platform')
 endif
 if 'CONFIG_NVMM' not in accelerators and get_option('nvmm').enabled()
   error('NVMM not available on this platform')
@@ -4814,6 +4823,7 @@ summary_info = {}
 if have_system
   summary_info += {'KVM support':       config_all_accel.has_key('CONFIG_KVM')}
   summary_info += {'Nitro support':     config_all_accel.has_key('CONFIG_NITRO')}
+  summary_info += {'Multikernel support': config_all_accel.has_key('CONFIG_MULTIKERNEL')}
   summary_info += {'HVF support':       config_all_accel.has_key('CONFIG_HVF')}
   summary_info += {'WHPX support':      config_all_accel.has_key('CONFIG_WHPX')}
   summary_info += {'NVMM support':      config_all_accel.has_key('CONFIG_NVMM')}

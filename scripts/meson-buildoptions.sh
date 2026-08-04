@@ -157,6 +157,7 @@ meson_options_help() {
   printf "%s\n" '  netmap          netmap network backend support'
   printf "%s\n" '  nettle          nettle cryptography support'
   printf "%s\n" '  nitro           Nitro acceleration support'
+  printf "%s\n" '  multikernel     Multikernel acceleration support'
   printf "%s\n" '  numa            libnuma support'
   printf "%s\n" '  nvmm            NVMM acceleration support'
   printf "%s\n" '  opengl          OpenGL support'
@@ -416,6 +417,8 @@ _meson_option_parse() {
     --disable-nettle) printf "%s" -Dnettle=disabled ;;
     --enable-nitro) printf "%s" -Dnitro=enabled ;;
     --disable-nitro) printf "%s" -Dnitro=disabled ;;
+    --enable-multikernel) printf "%s" -Dmultikernel=enabled ;;
+    --disable-multikernel) printf "%s" -Dmultikernel=disabled ;;
     --enable-numa) printf "%s" -Dnuma=enabled ;;
     --disable-numa) printf "%s" -Dnuma=disabled ;;
     --enable-nvmm) printf "%s" -Dnvmm=enabled ;;

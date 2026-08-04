@@ -146,6 +146,11 @@ config NITRO_ENCLAVE
     select VHOST_USER_VSOCK
     select VIRTIO_NSM
 
+config MULTIKERNEL_MACHINE
+    bool
+    default y
+    depends on I386 && MULTIKERNEL
+
 config X86_IOMMU
     bool
     depends on PC
